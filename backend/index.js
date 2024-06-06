@@ -14,6 +14,8 @@ const authRouter = require("./routes/authRoutes");
 app.use("/auth", authRouter);
 const userRouter = require("./routes/user.routes");
 app.use("/users", userRouter);
+const productRouter = require("./routes/product.routes");
+app.use("/product", productRouter);
 app.use(cors());
 // createAdminAccount();
 
