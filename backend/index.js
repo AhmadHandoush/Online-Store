@@ -1,23 +1,28 @@
+// const { createAdminAccount } = require("./scripts/seup");
+// createAdminAccount();
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-// const { createAdminAccount } = require("./scripts/seup");
 const app = express();
 const { connect } = require("./configuration/dbConfig");
-const PORT = process.env.PORT || 5000;
-// const userRoute = require("./routes/authRoutes");
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
-// app.use("/user", userRoute);
-
-const authRouter = require("./routes/authRoutes");
-app.use("/auth", authRouter);
-const userRouter = require("./routes/user.routes");
-app.use("/users", userRouter);
 const productRouter = require("./routes/product.routes");
-app.use("/product", productRouter);
+const authRouter = require("./routes/authRoutes");
+const userRouter = require("./routes/user.routes");
+const multer = require("multer");
+const PORT = process.env.PORT || 5000;
+const path = require("path");
+const fileUpload = require("express-fileupload");
+
 app.use(cors());
-// createAdminAccount();
+app.use(express.json());
+app.use(fileUpload());
+
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/auth", authRouter);
+app.use("/users", userRouter);
+app.use("/product", productRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
