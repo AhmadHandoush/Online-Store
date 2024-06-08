@@ -82,8 +82,32 @@ const deleteProductById = async (req, res) => {
     return res.status(500).send("Internal server error!");
   }
 };
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name, category, description, price } = req.body;
+
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(
+      id,
+      {
+        name,
+        category,
+        description,
+        price,
+      },
+      { new: true }
+    );
+    return res.status(200).json({
+      message: "product updated successfully",
+      product: updatedProduct,
+    });
+  } catch (err) {
+    return res.status(500).send("Internal server error!");
+  }
+};
 
 module.exports = {
   createProduct,
   deleteProductById,
+  updateProduct,
 };

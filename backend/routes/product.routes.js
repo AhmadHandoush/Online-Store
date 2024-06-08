@@ -2,6 +2,7 @@ const express = require("express");
 const {
   createProduct,
   deleteProductById,
+  updateProduct,
 } = require("../controllers/Products.controller");
 const adminMiddleware = require("../middlware/admin.middleware");
 const authMiddleware = require("../middlware/auth.middleware");
@@ -15,7 +16,7 @@ router.delete(
   adminMiddleware,
   deleteProductById
 );
-
+router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 module.exports = router;
 // const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
