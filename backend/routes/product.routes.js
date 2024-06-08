@@ -4,6 +4,7 @@ const {
   deleteProductById,
   updateProduct,
   getproductbyId,
+  getAllProducts,
 } = require("../controllers/Products.controller");
 const adminMiddleware = require("../middlware/admin.middleware");
 const authMiddleware = require("../middlware/auth.middleware");
@@ -19,6 +20,7 @@ router.delete(
 );
 router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 router.get("/:id", authMiddleware, adminMiddleware, getproductbyId);
+router.get("/", authMiddleware, adminMiddleware, getAllProducts);
 module.exports = router;
 // const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
