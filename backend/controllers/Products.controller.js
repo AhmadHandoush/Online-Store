@@ -106,8 +106,19 @@ const updateProduct = async (req, res) => {
   }
 };
 
+const getproductbyId = async (req, res) => {
+  const { id } = req.params;
+  const product = await Product.findById(id);
+  try {
+    res.json(product);
+  } catch (err) {
+    res.status(500).send("Internal server error!");
+  }
+};
+
 module.exports = {
   createProduct,
   deleteProductById,
   updateProduct,
+  getproductbyId,
 };
