@@ -1,4 +1,4 @@
-const Product = require("../models/Product.model"); // Adjust the path according to your folder structure
+const Product = require("../models/Product.model");
 const path = require("path");
 const fs = require("fs");
 
@@ -72,7 +72,18 @@ const createProduct = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+const deleteProductById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    return res.json({ message: "Product deleted succcessfully" });
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).send("Internal server error!");
+  }
+};
 
 module.exports = {
   createProduct,
+  deleteProductById,
 };
