@@ -11,7 +11,7 @@ const {
 
 const router = express.Router();
 router.post("/create", authMiddleware, adminMiddleware, createCategory);
-router.get("/", authMiddleware, adminMiddleware, getAllCategories);
+router.get("/", authMiddleware, getAllCategories);
 router.get("/:id", authMiddleware, adminMiddleware, getCategorybyId);
 router.delete("/delete/:id", authMiddleware, adminMiddleware, deleteCategory);
 router.put("/update/:id", authMiddleware, adminMiddleware, updateCategory);
