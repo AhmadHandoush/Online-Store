@@ -70,5 +70,29 @@ const getOrdersByUserId = async (req, res) => {
     res.satus(500).send("Internal server error");
   }
 };
-
-module.exports = { createOrder, myOrders, getOrdersByUserId };
+const deleteOrderById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedOrder = await Order.findByIdAndDelete(id);
+    return res.status(200).json({ message: "Product deleted succcessfully" });
+  } catch (e) {
+    console.log(e.message);
+    return res.status(500).send("Internal server error!");
+  }
+};
+const getOrderById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const order = await Order.findById(id);
+    return res.status(200).json(order);
+  } catch (err) {
+    res.status(500).send("Internal server error!");
+  }
+};
+module.exports = {
+  createOrder,
+  myOrders,
+  getOrdersByUserId,
+  deleteOrderById,
+  getOrderById,
+};
