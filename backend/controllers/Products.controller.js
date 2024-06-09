@@ -4,9 +4,14 @@ const fs = require("fs");
 
 const createProduct = async (req, res) => {
   try {
-    // Check if a file is uploaded
-    if (!req.files || !req.files.image) {
-      return res.status(400).json({ message: "No image uploaded" });
+    // Check if files are uploaded
+    if (
+      !req.files ||
+      !req.files.images ||
+      !Array.isArray(req.files.images) ||
+      req.files.images.length < 3
+    ) {
+      return res.status(400).json({ message: "Three images must be uploaded" });
     }
 
     const { name, category, description, price } = req.body;
@@ -23,50 +28,58 @@ const createProduct = async (req, res) => {
       return res.status(400).json({ message: "Please provide a valid price" });
     }
 
-    const imageFile = req.files.image;
+    const images = req.files.images;
 
-    // Validate file type and size (optional)
+    // Validate file type and size
     const validMimeTypes = [
       "image/jpeg",
       "image/png",
       "image/gif",
       "image/jpg",
     ];
-    if (!validMimeTypes.includes(imageFile.mimetype)) {
-      return res.status(400).json({ message: "Invalid file type" });
-    }
-
     const maxFileSize = 5 * 1024 * 1024; // 5 MB
-    if (imageFile.size > maxFileSize) {
-      return res.status(400).json({ message: "File size exceeds limit" });
-    }
 
-    // Create a unique file name
-    const fileName = `${Date.now()}_${imageFile.name}`;
-    const uploadPath = path.join(__dirname, "..", "uploads", fileName);
+    const uploadedImageFiles = [];
 
-    // Move the file to the desired location
-    imageFile.mv(uploadPath, async (err) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: "File upload failed" });
+    for (const imageFile of images) {
+      if (!validMimeTypes.includes(imageFile.mimetype)) {
+        return res.status(400).json({ message: "Invalid file type" });
       }
 
-      // Create new product
-      const newProduct = new Product({
-        name,
-        category,
-        description,
-        price,
-        image: fileName, // Save the file name or path in the database
+      if (imageFile.size > maxFileSize) {
+        return res.status(400).json({ message: "File size exceeds limit" });
+      }
+
+      
+      const fileName = `${Date.now()}_${imageFile.name}`;
+      const uploadPath = path.join(__dirname, "..", "uploads", fileName);
+
+      await new Promise((resolve, reject) => {
+        imageFile.mv(uploadPath, (err) => {
+          if (err) {
+            console.error(err);
+            return reject("File upload failed");
+          }
+          uploadedImageFiles.push(fileName);
+          resolve();
+        });
       });
+    }
 
-      await newProduct.save();
-
-      res
-        .status(201)
-        .json({ message: "Product created successfully", product: newProduct });
+    // Create new product
+    const newProduct = new Product({
+      name,
+      category,
+      description,
+      price,
+      images: uploadedImageFiles,
     });
+
+    await newProduct.save();
+
+    res
+      .status(201)
+      .json({ message: "Product created successfully", product: newProduct });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
