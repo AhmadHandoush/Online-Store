@@ -14,10 +14,10 @@ const createProduct = async (req, res) => {
       return res.status(400).json({ message: "Three images must be uploaded" });
     }
 
-    const { name, category, description, price } = req.body;
+    const { name, category, description, price, quantity } = req.body;
 
     // Validate required fields
-    if (!name || !category || !description || !price) {
+    if (!name || !category || !description || !price || !quantity) {
       return res
         .status(400)
         .json({ message: "Please provide all required fields" });
@@ -26,6 +26,12 @@ const createProduct = async (req, res) => {
     // Validate price
     if (isNaN(price) || price <= 0) {
       return res.status(400).json({ message: "Please provide a valid price" });
+    }
+    // validate quantity
+    if (isNaN(quantity) || quantity <= 0) {
+      return res
+        .status(400)
+        .json({ message: "quantity should be greater than or equal to 1" });
     }
 
     const images = req.files.images;
@@ -50,7 +56,6 @@ const createProduct = async (req, res) => {
         return res.status(400).json({ message: "File size exceeds limit" });
       }
 
-      
       const fileName = `${Date.now()}_${imageFile.name}`;
       const uploadPath = path.join(__dirname, "..", "uploads", fileName);
 
@@ -73,6 +78,7 @@ const createProduct = async (req, res) => {
       description,
       price,
       images: uploadedImageFiles,
+      quantity,
     });
 
     await newProduct.save();

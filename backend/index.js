@@ -10,6 +10,7 @@ const productRouter = require("./routes/product.routes");
 const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/category.routes");
+const orderRouter = require("./routes/Order.routes");
 const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
@@ -25,6 +26,7 @@ app.use("/auth", authRouter);
 app.use("/users", userRouter);
 app.use("/product", productRouter);
 app.use("/category", categoryRouter);
+app.use("/order", orderRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;
