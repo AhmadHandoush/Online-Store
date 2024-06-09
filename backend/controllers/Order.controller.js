@@ -52,5 +52,14 @@ const createOrder = async (req, res) => {
     res.status(500).send("Internal server error");
   }
 };
+const getOrdersforUserId = async (req, res) => {
+  const user_id = req.user._id;
+  try {
+    const orders = await Order.find({ user_id });
+    return res.status(200).json({ orders: orders });
+  } catch (err) {
+    res.satus(500).send("Internal server error");
+  }
+};
 
 module.exports = { createOrder, getOrdersforUserId };
