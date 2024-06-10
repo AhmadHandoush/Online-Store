@@ -42,10 +42,7 @@ const createOrder = async (req, res) => {
       client_address,
     });
 
-    // Save the order to the database
     await order.save();
-
-    // Respond with the created order
     res.status(201).json(order);
   } catch (err) {
     console.log(err.message);
