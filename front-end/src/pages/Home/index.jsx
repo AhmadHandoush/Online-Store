@@ -3,7 +3,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
     if (!localStorage.getItem("token")) {

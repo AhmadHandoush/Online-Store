@@ -3,6 +3,11 @@ import Home from "./pages/Home";
 import { AuthProvider } from "./contexts/AuthContext";
 import AuthSwitch from "./pages/Auth";
 import Admin from "./pages/admin";
+import Main from "./pages/admin/pages/main";
+import Categories from "./pages/admin/pages/categories";
+import Brands from "./pages/admin/pages/brands";
+import Orders from "./pages/admin/pages/orders";
+import Users from "./pages/admin/pages/users";
 
 function App() {
   return (
@@ -12,7 +17,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<AuthSwitch />} />
-            <Route path="/admind-dashboard" element={<Admin />}></Route>
+            <Route path="/admin-dashboard" element={<Admin />}>
+              <Route index element={<Main />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="brands" element={<Brands />} />
+              <Route path="products" element={<Brands />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="users" element={<Users />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </AuthProvider>

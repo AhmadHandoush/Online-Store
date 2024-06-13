@@ -8,6 +8,11 @@ module.exports = {
         "9/10": "90%",
         "5/10": "50%",
       },
+      colors: {
+        "bg-primary": "#155e75",
+        "text-secondary": "#ffffff",
+        primary: "#155e75",
+      },
     },
   },
   plugins: [],

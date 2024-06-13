@@ -1,0 +1,12 @@
+/* aside li a {
+  flex-direction: row-reverse;
+}
+aside li:hover a {
+  flex-direction: row;
+}
+aside li span {
+  display: none;
+}
+aside li:hover span {
+  display: block;
+} */

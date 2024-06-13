@@ -29,7 +29,7 @@ const Login = () => {
         setLoading(false);
         if (data.user.role === "admin") {
           setTimeout(() => {
-            navigate("/admind-dashboard");
+            navigate("/admin-dashboard");
           });
         } else {
           setTimeout(() => {
