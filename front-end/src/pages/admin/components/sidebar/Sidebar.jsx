@@ -5,11 +5,19 @@ import { TbBrandSupabase } from "react-icons/tb";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 import "./sidebar.css";
+import { useContext, useState } from "react";
+import { StateContext } from "../../../../contexts/StateContext";
 
 function Sidebar() {
+  const { openSide } = useContext(StateContext);
   return (
-    <aside className=" w-60 pt-2 h-screen bg-primary transition-all">
+    <aside
+      className={`${
+        openSide && "open"
+      } w-60 pt-2 bg-primary transition-all h-screen`}
+    >
       <div className="logo flex-start pl-3  pb-2 ">
         <img src="./Capture.png" alt="logo" className="w-32 h-9" />
       </div>

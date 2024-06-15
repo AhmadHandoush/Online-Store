@@ -8,25 +8,28 @@ import Categories from "./pages/admin/pages/categories";
 import Brands from "./pages/admin/pages/brands";
 import Orders from "./pages/admin/pages/orders";
 import Users from "./pages/admin/pages/users";
+import { StateProvider } from "./contexts/StateContext";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<AuthSwitch />} />
-            <Route path="/admin-dashboard" element={<Admin />}>
-              <Route index element={<Main />} />
-              <Route path="categories" element={<Categories />} />
-              <Route path="brands" element={<Brands />} />
-              <Route path="products" element={<Brands />} />
-              <Route path="orders" element={<Orders />} />
-              <Route path="users" element={<Users />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <StateProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/auth" element={<AuthSwitch />} />
+              <Route path="/admin-dashboard" element={<Admin />}>
+                <Route index element={<Main />} />
+                <Route path="categories" element={<Categories />} />
+                <Route path="brands" element={<Brands />} />
+                <Route path="products" element={<Brands />} />
+                <Route path="orders" element={<Orders />} />
+                <Route path="users" element={<Users />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </StateProvider>
       </AuthProvider>
     </div>
   );
