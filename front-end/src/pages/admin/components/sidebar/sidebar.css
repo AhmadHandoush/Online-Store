@@ -1,3 +1,14 @@
+.active {
+  background-color: white;
+}
+.active span,
+.active svg {
+  color: #155e75;
+}
+aside a {
+  border-radius: 6px;
+}
+
 @media only screen and (max-width: 600px) {
   aside {
     position: absolute;

@@ -11,7 +11,7 @@ async function createAdminAccount() {
         firstName: "Admin",
         lastName: "123",
         email: "admin@gmail.com",
-        password: "admin",
+        password: "admin1999",
         role: "admin",
       });
       await newAdmin.save();

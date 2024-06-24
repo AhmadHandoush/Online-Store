@@ -26,6 +26,7 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
+        
         setLoading(false);
         if (data.user.role === "admin") {
           setTimeout(() => {

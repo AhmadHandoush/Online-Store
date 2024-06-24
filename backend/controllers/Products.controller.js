@@ -1,4 +1,7 @@
 const Product = require("../models/Product.model");
+const Category = require("../models/Category.model");
+const Brand = require("../models/Brand.model");
+
 const path = require("path");
 const fs = require("fs");
 
@@ -14,10 +17,10 @@ const createProduct = async (req, res) => {
       return res.status(400).json({ message: "Three images must be uploaded" });
     }
 
-    const { name, category, description, price, quantity } = req.body;
+    const { name, category, description, price, quantity, brand } = req.body;
 
     // Validate required fields
-    if (!name || !category || !description || !price || !quantity) {
+    if (!name || !category || !description || !price || !quantity || !brand) {
       return res
         .status(400)
         .json({ message: "Please provide all required fields" });
@@ -75,6 +78,7 @@ const createProduct = async (req, res) => {
     const newProduct = new Product({
       name,
       category,
+      brand,
       description,
       price,
       images: uploadedImageFiles,
@@ -127,7 +131,9 @@ const updateProduct = async (req, res) => {
 
 const getproductbyId = async (req, res) => {
   const { id } = req.params;
-  const product = await Product.findById(id);
+  const product = await Product.findById(id)
+    .populate("category")
+    .populate("brand");
   try {
     res.json(product);
   } catch (err) {
@@ -136,8 +142,10 @@ const getproductbyId = async (req, res) => {
 };
 const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find();
-    res.json({ products: products });
+    const products = await Product.find()
+      .populate("category")
+      .populate("brand");
+    res.json(products);
   } catch (err) {
     res.status(500).send("Internal server error!");
   }

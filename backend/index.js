@@ -11,14 +11,18 @@ const authRouter = require("./routes/authRoutes");
 const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/category.routes");
 const orderRouter = require("./routes/Order.routes");
+const brandRouter = require("./routes/brand.routes");
 const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
 const fileUpload = require("express-fileupload");
+const { createAdminAccount } = require("./scripts/seup");
+// createAdminAccount();
 
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -27,6 +31,7 @@ app.use("/users", userRouter);
 app.use("/product", productRouter);
 app.use("/category", categoryRouter);
 app.use("/order", orderRouter);
+app.use("/brand", brandRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;

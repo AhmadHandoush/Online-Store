@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import "./auth.css";
 const AuthSwitch = () => {
   const [isLogin, setIsLogin] = useState(true);
+  useEffect(() => {
+    localStorage.clear();
+  });
 
   return (
     <div className="auth min-h-screen flex-center">

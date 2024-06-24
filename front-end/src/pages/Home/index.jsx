@@ -10,7 +10,7 @@ function Home() {
       navigate("/auth");
     }
   });
-
+  const { user } = useContext(AuthContext);
   return (
     <div>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sapiente

@@ -86,10 +86,19 @@ const getOrderById = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
+const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.json({ orders: orders });
+  } catch (err) {
+    res.status(500).send("Internal server error!");
+  }
+};
 module.exports = {
   createOrder,
   myOrders,
   getOrdersByUserId,
   deleteOrderById,
   getOrderById,
+  getAllOrders,
 };

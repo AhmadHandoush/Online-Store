@@ -16,16 +16,16 @@ function Sidebar() {
     <aside
       className={`${
         openSide && "open"
-      } w-60 pt-2 bg-primary transition-all h-screen`}
+      } w-60 pt-2 bg-primary transition-all h-screen lg:sticky top-0 `}
     >
       <div className="logo flex-start pl-3  pb-2 ">
         <img src="./Capture.png" alt="logo" className="w-32 h-9" />
       </div>
       <hr />
       <ul className="px-3 pt-5 flex column gap-5">
-        <li className="hover:bg-white group rounded transition-all">
+        <li className="rounded hover:bg-white group rounded transition-all">
           <NavLink
-            to={"/admin-dashboard"}
+            to={"/admin-dashboard/main"}
             className="flex items-center gap-x-2 p-2 "
           >
             <AiOutlineAppstore className="text-lg text-white font-bold size-5 group-hover:text-primary" />

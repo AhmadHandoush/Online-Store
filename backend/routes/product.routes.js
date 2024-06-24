@@ -19,8 +19,8 @@ router.delete(
   deleteProductById
 );
 router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
-router.get("/:id", authMiddleware, adminMiddleware, getproductbyId);
-router.get("/products", authMiddleware, adminMiddleware, getAllProducts);
+router.get("/:id", authMiddleware, getproductbyId);
+router.get("/", authMiddleware, getAllProducts);
 module.exports = router;
 // const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
