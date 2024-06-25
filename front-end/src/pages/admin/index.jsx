@@ -7,7 +7,7 @@ import Overlay from "../../components/overlay";
 import { AuthContext } from "../../contexts/AuthContext";
 
 function Admin() {
-  const { openSide, setOpenSide } = useContext(StateContext);
+  const { overlaying, openSide } = useContext(StateContext);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
@@ -20,6 +20,7 @@ function Admin() {
   // }, [user]);
   return (
     <div className="admin flex  ">
+      {overlaying && <Overlay />}
       {openSide && <Overlay />}
       <Sidebar />
       <div className="flex-1">

@@ -8,6 +8,9 @@ module.exports = {
         "9/10": "90%",
         "5/10": "50%",
       },
+      height: {
+        "8/10": "80%",
+      },
       colors: {
         "bg-primary": "#155e75",
         "text-secondary": "#ffffff",

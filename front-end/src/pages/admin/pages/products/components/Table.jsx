@@ -8,7 +8,17 @@ import Delete from "./Delete";
 
 function Table() {
   const { products } = useContext(ProductsContext);
-  const { deleteProduct, setDeleteProduct } = useContext(StateContext);
+  const {
+    deleteProduct,
+    setDeleteProduct,
+    viewProduct,
+    setViewProduct,
+    setOverlay,
+  } = useContext(StateContext);
+  const ViewProduct = () => {
+    setViewProduct(true);
+    setOverlay(true);
+  };
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg">
@@ -56,11 +66,16 @@ function Table() {
                 />
               </td>
               <td className="px-2 py-5 bg-gray-200  flex gap-5 justify-center">
-                <IoEye className="w-6 h-6 text-green-500" />
+                <IoEye
+                  className="w-6 h-6 text-green-500 cursor-pointer"
+                  onClick={() => ViewProduct()}
+                />
                 <AiFillEdit className="w-6 h-6 font-bold" />
                 <FaTrashAlt
                   className="w-6 h-6  text-red-500 cursor-pointer relative "
-                  onClick={() => setDeleteProduct(true)}
+                  onClick={() => {
+                    setDeleteProduct(true);
+                  }}
                 />
               </td>
               {deleteProduct && <Delete />}
