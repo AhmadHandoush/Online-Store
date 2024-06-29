@@ -1,10 +1,16 @@
 import { useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { StateContext } from "../../../../../contexts/StateContext";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { BASE_URL } from "../../../../../utils/Constants";
+import { ProductsContext } from "../../../../../contexts/ProductsContext";
 
 function ViewProduct() {
   const { ViewProduct, setViewProduct, setOverlay } = useContext(StateContext);
+  const { product } = useContext(ProductsContext);
+  const { name, brand, category, price, description, quantity, images } =
+    product;
+
   const close = () => {
     setViewProduct(false);
     setOverlay(false);
@@ -28,43 +34,57 @@ function ViewProduct() {
         X
       </span>
       <div className="w-72 h-72">
-        <Carousel>
-          <div>
-            <img src="../HND.png" />
+        <Carousel infiniteLoop autoPlay>
+          {images.map((img) => (
+            <div>
+              <img src={`${BASE_URL}/uploads/${img}`} alt={`${product.name}`} />
+            </div>
+          ))}
+          {/* <div>
+            <img
+              src={`${BASE_URL}/uploads/${product.images[0]}`}
+              alt={`${product.name}`}
+            />
           </div>
           <div>
-            <img src="../HND.png" />
+            <img
+              src={`${BASE_URL}/uploads/${product.images[1]}`}
+              alt={`${product.name}`}
+            />
           </div>
           <div>
-            <img src="../HND.png" />
-          </div>
+            <img
+              src={`${BASE_URL}/uploads/${product.images[2]}`}
+              alt={`${product.name}`}
+            />
+          </div> */}
         </Carousel>
       </div>
 
       <div className=" flex flex-1 column gap-6 h-73">
         <div className="flex justify-between">
           <h2 className="font-bold">Name </h2>
-          <h3>product</h3>
+          <h3>{name}</h3>
         </div>
         <div className="flex justify-between">
           <h2 className="font-bold">Brand </h2>
-          <h3>brand</h3>
+          <h3>{brand.name}</h3>
         </div>
         <div className="flex justify-between">
           <h2 className="font-bold">Category </h2>
-          <h3>Category</h3>
+          <h3>{category.name}</h3>
         </div>
         <div className="flex justify-between">
           <h2 className="font-bold">Price </h2>
-          <h3>200$</h3>
+          <h3>{price}$</h3>
         </div>
         <div className="flex justify-between">
           <h2 className="font-bold">Quantity </h2>
-          <h3>14</h3>
+          <h3>{quantity}</h3>
         </div>
         <div className="overflow-auto">
           <h2 className="font-bold">Description </h2>
-          <h3>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h3>
+          <h3>{description}</h3>
         </div>
       </div>
     </div>

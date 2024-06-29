@@ -7,7 +7,7 @@ import { StateContext } from "../../../../../contexts/StateContext";
 import Delete from "./Delete";
 
 function Table() {
-  const { products } = useContext(ProductsContext);
+  const { products, setProduct } = useContext(ProductsContext);
   const {
     deleteProduct,
     setDeleteProduct,
@@ -15,9 +15,10 @@ function Table() {
     setViewProduct,
     setOverlay,
   } = useContext(StateContext);
-  const ViewProduct = () => {
+  const ViewProduct = (product) => {
     setViewProduct(true);
     setOverlay(true);
+    setProduct(product);
   };
   return (
     <div className="overflow-x-auto">
@@ -68,7 +69,7 @@ function Table() {
               <td className="px-2 py-5 bg-gray-200  flex gap-5 justify-center">
                 <IoEye
                   className="w-6 h-6 text-green-500 cursor-pointer"
-                  onClick={() => ViewProduct()}
+                  onClick={() => ViewProduct(product)}
                 />
                 <AiFillEdit className="w-6 h-6 font-bold" />
                 <FaTrashAlt

@@ -10,6 +10,7 @@ export const ProductsProvider = ({ children }) => {
   const [loading, setLaoding] = useState(false);
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
+  const [product, setProduct] = useState(null);
   const fetchCategories = async () => {
     try {
       setLaoding(true);
@@ -50,6 +51,7 @@ export const ProductsProvider = ({ children }) => {
       setLaoding(false);
     }
   };
+
   const fetchOrders = async () => {
     try {
       setLaoding(true);
@@ -90,6 +92,9 @@ export const ProductsProvider = ({ children }) => {
         setCategories,
         orders,
         setOrders,
+        product,
+        setProduct,
+        token,
       }}
     >
       {children}
