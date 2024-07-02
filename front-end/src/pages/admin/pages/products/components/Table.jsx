@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../../../../../contexts/ProductsContext";
 import { IoEye } from "react-icons/io5";
 import { AiFillEdit } from "react-icons/ai";
@@ -7,14 +7,11 @@ import { StateContext } from "../../../../../contexts/StateContext";
 import Delete from "./Delete";
 
 function Table() {
-  const { products, setProduct } = useContext(ProductsContext);
-  const {
-    deleteProduct,
-    setDeleteProduct,
-    viewProduct,
-    setViewProduct,
-    setOverlay,
-  } = useContext(StateContext);
+  const { products, setProduct, filteredProducts } =
+    useContext(ProductsContext);
+
+  const { deleteProduct, setDeleteProduct, setViewProduct, setOverlay } =
+    useContext(StateContext);
   const ViewProduct = (product) => {
     setViewProduct(true);
     setOverlay(true);
@@ -45,7 +42,7 @@ function Table() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {products.map((product, index) => (
+          {filteredProducts.map((product, index) => (
             <tr
               className={`${index % 2 === 0 ? "bg-gray-200" : "bg-gray-50"} `}
               key={product._id}

@@ -16,7 +16,7 @@ function Sidebar() {
     <aside
       className={`${
         openSide && "open"
-      } w-60 pt-2 bg-primary transition-all h-screen lg:sticky top-0 `}
+      } w-60 pt-2 bg-primary transition-all h-screen md:sticky top-0 `}
     >
       <div className="logo flex-start pl-3  pb-2 ">
         <img src="./Capture.png" alt="logo" className="w-32 h-9" />

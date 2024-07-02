@@ -4,6 +4,7 @@ import { BASE_URL } from "../utils/Constants";
 export const ProductsContext = createContext();
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [brands, setBrands] = useState([]);
   const [orders, setOrders] = useState([]);
@@ -11,6 +12,17 @@ export const ProductsProvider = ({ children }) => {
   const [error, setError] = useState("");
   const token = localStorage.getItem("token");
   const [product, setProduct] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  useEffect(() => {
+    const filtered = products.filter(
+      (item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.brand.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.category.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [searchQuery, products]);
+
   const fetchCategories = async () => {
     try {
       setLaoding(true);
@@ -44,6 +56,7 @@ export const ProductsProvider = ({ children }) => {
       }
       const data = await response.json();
       setProducts(data);
+      setFilteredProducts(data);
       setLaoding(false);
     } catch (err) {
       setError(err.message);
@@ -79,7 +92,7 @@ export const ProductsProvider = ({ children }) => {
       fetchCategories();
       fetchOrders();
     }
-  }, []);
+  }, [token]);
 
   return (
     <ProductsContext.Provider
@@ -95,6 +108,14 @@ export const ProductsProvider = ({ children }) => {
         product,
         setProduct,
         token,
+        loading,
+        setLaoding,
+        error,
+        setError,
+        filteredProducts,
+        setFilteredProducts,
+        searchQuery,
+        setSearchQuery,
       }}
     >
       {children}
