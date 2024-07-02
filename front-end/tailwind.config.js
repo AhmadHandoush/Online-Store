@@ -13,6 +13,7 @@ module.exports = {
       },
       colors: {
         "bg-primary": "#155e75",
+        "bg-white": "#ffffff",
         "text-secondary": "#ffffff",
         primary: "#155e75",
       },

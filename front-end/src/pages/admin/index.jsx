@@ -5,12 +5,14 @@ import AdminHeader from "./components/header/AdminHeader";
 import { StateContext } from "../../contexts/StateContext";
 import Overlay from "../../components/overlay";
 import { AuthContext } from "../../contexts/AuthContext";
+import Success from "./components/Success";
 
 function Admin() {
-  const { overlaying, openSide } = useContext(StateContext);
+  const { overlaying, openSide, message } = useContext(StateContext);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const token = localStorage.getItem("token");
+
   // useEffect(() => {
   //   if (token) {
   //     console.log(user.role);
@@ -19,13 +21,14 @@ function Admin() {
   //   }
   // }, [user]);
   return (
-    <div className="admin flex  ">
+    <div className="admin flex relative">
       {overlaying && <Overlay />}
       {openSide && <Overlay />}
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex-1 ">
         <AdminHeader />
         <Outlet />
+        {message && <Success message={message} />}
       </div>
     </div>
   );

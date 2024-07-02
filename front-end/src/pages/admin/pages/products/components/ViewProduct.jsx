@@ -17,13 +17,16 @@ function ViewProduct() {
   };
   return (
     <div
-      className="flex gap-10 absolute px-10 bg-white     justify-between pt-10 "
+      className="flex gap-10  px-10 bg-white  justify-between pt-10  rounded"
       style={{
+        position: "fixed",
         zIndex: "1000",
         height: "450px",
-        width: "70%",
+        width: "60%",
         top: "50%",
-        left: "10%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       }}
     >
       <span
@@ -33,10 +36,10 @@ function ViewProduct() {
       >
         X
       </span>
-      <div className="w-72 h-72">
+      <div className="w-72 h-full">
         <Carousel infiniteLoop autoPlay>
           {images.map((img) => (
-            <div>
+            <div key={img}>
               <img src={`${BASE_URL}/uploads/${img}`} alt={`${product.name}`} />
             </div>
           ))}

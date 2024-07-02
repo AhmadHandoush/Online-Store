@@ -45,28 +45,31 @@ function Table() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {products.map((product) => (
-            <tr className="">
-              <td className="px-6 py-4 whitespace-nowrap   bg-gray-200 font-bold">
+          {products.map((product, index) => (
+            <tr
+              className={`${index % 2 === 0 ? "bg-gray-200" : "bg-gray-50"} `}
+              key={product._id}
+            >
+              <td className="px-6 py-4 whitespace-nowrap   font-bold">
                 {product.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  bg-gray-200 font-bold">
+              <td className="px-6 py-4 whitespace-nowrap  font-bold">
                 {product.category.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap bg-gray-200 font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold">
                 {product.brand.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap bg-gray-200 font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold">
                 {product.price}$
               </td>
-              <td className="px-6 py-4 whitespace-nowrap bg-gray-200 ">
+              <td className="px-6 py-4 whitespace-nowrap ">
                 <img
                   src={`http://localhost:3001/uploads/${product.images[0]}`}
                   alt="product"
                   className="w-6  h-6"
                 />
               </td>
-              <td className="px-2 py-5 bg-gray-200  flex gap-5 justify-center">
+              <td className="px-2 py-5 flex gap-5 justify-center">
                 <IoEye
                   className="w-6 h-6 text-green-500 cursor-pointer"
                   onClick={() => ViewProduct(product)}
@@ -79,7 +82,7 @@ function Table() {
                   }}
                 />
               </td>
-              {deleteProduct && <Delete />}
+              {deleteProduct && <Delete product={product} />}
             </tr>
           ))}
         </tbody>

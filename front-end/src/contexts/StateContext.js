@@ -7,6 +7,8 @@ export const StateProvider = ({ children }) => {
   const [deleteProduct, setDeleteProduct] = useState(false);
   const [viewProduct, setViewProduct] = useState(false);
   const [overlaying, setOverlay] = useState(false);
+  const [message, setMessage] = useState("");
+
   return (
     <StateContext.Provider
       value={{
@@ -18,6 +20,8 @@ export const StateProvider = ({ children }) => {
         setViewProduct,
         overlaying,
         setOverlay,
+        message,
+        setMessage,
       }}
     >
       {children}

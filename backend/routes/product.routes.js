@@ -12,12 +12,7 @@ const {
 } = require("../controllers/Products.controller");
 
 router.post("/create", authMiddleware, adminMiddleware, createProduct);
-router.delete(
-  "/delete/:id",
-  authMiddleware,
-  adminMiddleware,
-  deleteProductById
-);
+router.post("/delete/:id", authMiddleware, deleteProductById);
 router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 router.get("/:id", authMiddleware, getproductbyId);
 router.get("/", authMiddleware, getAllProducts);
