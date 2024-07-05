@@ -5,8 +5,8 @@ export const ProductsContext = createContext();
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  const [categoriesData, setCategoriesData] = useState([]);
+  const [brandsData, setBrandsData] = useState([]);
   const [orders, setOrders] = useState([]);
   const [loading, setLaoding] = useState(false);
   const [error, setError] = useState("");
@@ -23,26 +23,6 @@ export const ProductsProvider = ({ children }) => {
     setFilteredProducts(filtered);
   }, [searchQuery, products]);
 
-  const fetchCategories = async () => {
-    try {
-      setLaoding(true);
-      const response = await fetch(`${BASE_URL}/category`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (!response.ok) {
-        throw new Error("Failed to fetch categories");
-      }
-      const data = await response.json();
-      setCategories(data.categories);
-      setLaoding(false);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLaoding(false);
-    }
-  };
   const fetchProducts = async () => {
     try {
       setLaoding(true);
@@ -86,10 +66,10 @@ export const ProductsProvider = ({ children }) => {
       setLaoding(false);
     }
   };
+
   useEffect(() => {
     if (token) {
       fetchProducts();
-      fetchCategories();
       fetchOrders();
     }
   }, [token]);
@@ -99,10 +79,10 @@ export const ProductsProvider = ({ children }) => {
       value={{
         products,
         setProducts,
-        brands,
-        setBrands,
-        categories,
-        setCategories,
+        brandsData,
+        setBrandsData,
+        categoriesData,
+        setCategoriesData,
         orders,
         setOrders,
         product,

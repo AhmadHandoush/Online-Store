@@ -6,7 +6,7 @@ function Search() {
   const { searchQuery, setSearchQuery } = useContext(ProductsContext);
 
   return (
-    <div className="w-72 px-2 bg-gray-200 py-2 flex gap-5 mb-10 rounded items-center ">
+    <div className="w-72 px-2 bg-gray-200 py-2 flex gap-5 rounded items-center ">
       <IoSearchSharp className="size-6 text-gray-400" />
       <input
         type="text"

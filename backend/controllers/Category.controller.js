@@ -59,6 +59,16 @@ const getCategorybyId = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
+const getCategoriesNumber = async (req, res) => {
+  try {
+    const categories = await Category.countDocuments();
+    res.json({
+      categories: categories,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error!");
+  }
+};
 
 module.exports = {
   createCategory,
@@ -66,4 +76,5 @@ module.exports = {
   updateCategory,
   getAllCategories,
   getCategorybyId,
+  getCategoriesNumber
 };

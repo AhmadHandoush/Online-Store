@@ -3,11 +3,42 @@ import Loader from "../../../../../components/Loader";
 import InfoCard from "./InfoCard";
 import { BASE_URL } from "../../../../../utils/Constants";
 import { ProductsContext } from "../../../../../contexts/ProductsContext";
+import { AuthContext } from "../../../../../contexts/AuthContext";
 
 function Overview() {
-  const { products, brands, categories, orders, loading } =
-    useContext(ProductsContext);
-
+  const { token } = useContext(AuthContext);
+  const [data, setData] = useState({
+    products: null,
+    orders: null,
+    categories: null,
+    brands: null,
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(`${BASE_URL}/product`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch products");
+      }
+      const data = await response.json();
+      setData(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+  const { categories, brands, products, orders } = data;
   return (
     <section
       className="flex-1 py-4 grid   grid-cols-1
@@ -23,7 +54,7 @@ function Overview() {
             <Loader />
           ) : (
             <h3 className="text-center text-xl text-xl font-bold">
-              {products.length}
+              {products}
             </h3>
           )}
         </div>
@@ -37,7 +68,7 @@ function Overview() {
             <Loader />
           ) : (
             <h3 className="text-center text-secondary font-bold text-xl">
-              {categories.length}
+              {categories}
             </h3>
           )}
         </div>
@@ -45,7 +76,9 @@ function Overview() {
       <InfoCard>
         <div className="p-4 px-20 flex column gap-2 bg-blue-500 rounded">
           <h2 className="text-center text-white font-bold text-xl">Brands</h2>
-          <h3 className="text-center text-secondary text-xl font-bold">12</h3>
+          <h3 className="text-center text-secondary text-xl font-bold">
+            {brands}
+          </h3>
         </div>
       </InfoCard>
       <InfoCard>
@@ -57,7 +90,7 @@ function Overview() {
             {loading ? (
               <Loader />
             ) : (
-              <h3 className="text-center text-xl font-bold">{orders.length}</h3>
+              <h3 className="text-center text-xl font-bold">{orders}</h3>
             )}
           </div>
         </div>

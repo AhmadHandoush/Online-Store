@@ -94,6 +94,17 @@ const getAllOrders = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
+const getOrdersNumber = async (req, res) => {
+  try {
+    const orders = await Order.countDocuments();
+    res.json({
+      orders: orders,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error!");
+  }
+};
+
 module.exports = {
   createOrder,
   myOrders,
@@ -101,4 +112,5 @@ module.exports = {
   deleteOrderById,
   getOrderById,
   getAllOrders,
+  getOrdersNumber
 };

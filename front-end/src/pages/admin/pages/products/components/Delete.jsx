@@ -3,7 +3,7 @@ import { StateContext } from "../../../../../contexts/StateContext";
 import { BASE_URL } from "../../../../../utils/Constants";
 import { ProductsContext } from "../../../../../contexts/ProductsContext";
 
-function Delete({ product }) {
+function Delete({ product, setProductId }) {
   const [error, setError] = useState("");
   const { setDeleteProduct, setMessage } = useContext(StateContext);
   const { products, setProducts } = useContext(ProductsContext);
@@ -47,7 +47,10 @@ function Delete({ product }) {
       <div className="flex gap-4">
         <button
           className="bg-gray-300 font-bold px-2 hover:opacity-50 transition-opacity duration-300"
-          onClick={() => setDeleteProduct(false)}
+          onClick={() => {
+            setDeleteProduct(false);
+            setProductId("");
+          }}
         >
           No
         </button>

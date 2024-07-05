@@ -59,6 +59,16 @@ const getBrandById = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
+const getBrandsNumber = async (req, res) => {
+  try {
+    const brands = await Brand.countDocuments();
+    res.json({
+      brands: brands,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error!");
+  }
+};
 
 module.exports = {
   createBrand,
@@ -66,4 +76,5 @@ module.exports = {
   getBrandById,
   updateBrand,
   getAllBrands,
+  getBrandsNumber
 };

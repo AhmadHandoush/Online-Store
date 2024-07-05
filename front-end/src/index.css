@@ -18,6 +18,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  letter-spacing: 1px;
 }
 ::selection {
   background-color: var(--main-color);
@@ -109,6 +110,10 @@ input::placeholder {
   border: 2px solid var(--main-color);
   border-right-color: #ffffff;
   animation: l2 1s infinite linear;
+}
+.input {
+  border-bottom: 4px solid var(--main-color);
+  outline: none;
 }
 @keyframes l2 {
   to {

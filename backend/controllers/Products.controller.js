@@ -1,6 +1,7 @@
 const Product = require("../models/Product.model");
 const Category = require("../models/Category.model");
 const Brand = require("../models/Brand.model");
+const Order = require("../models/Order.model");
 
 const path = require("path");
 const fs = require("fs");
@@ -107,7 +108,7 @@ const deleteProductById = async (req, res) => {
 };
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, category, description, price } = req.body;
+  const { name, category, description, price, brand } = req.body;
 
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -117,6 +118,7 @@ const updateProduct = async (req, res) => {
         category,
         description,
         price,
+        brand,
       },
       { new: true }
     );
@@ -150,10 +152,21 @@ const getAllProducts = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
+const getProductNumber = async (req, res) => {
+  try {
+    const products = await Product.countDocuments();
+    res.json({
+      products: products,
+    });
+  } catch (error) {
+    res.status(500).send("Internal server error!");
+  }
+};
 module.exports = {
   createProduct,
   deleteProductById,
   updateProduct,
   getproductbyId,
   getAllProducts,
+  getProductNumber,
 };

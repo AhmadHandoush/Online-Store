@@ -9,13 +9,15 @@ const {
   updateProduct,
   getproductbyId,
   getAllProducts,
+  getProductNumber,
 } = require("../controllers/Products.controller");
 
 router.post("/create", authMiddleware, adminMiddleware, createProduct);
 router.post("/delete/:id", authMiddleware, deleteProductById);
-router.put("/update/:id", authMiddleware, adminMiddleware, updateProduct);
+router.post("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 router.get("/:id", authMiddleware, getproductbyId);
 router.get("/", authMiddleware, getAllProducts);
+router.get("/products/number", authMiddleware, getProductNumber);
 module.exports = router;
 // const bodyParser = require("body-parser");
 // app.use(bodyParser.json());
