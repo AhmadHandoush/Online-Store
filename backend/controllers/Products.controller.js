@@ -9,6 +9,7 @@ const fs = require("fs");
 const createProduct = async (req, res) => {
   try {
     // Check if files are uploaded
+    console.log(req.body);
     if (
       !req.files ||
       !req.files.images ||
@@ -18,10 +19,28 @@ const createProduct = async (req, res) => {
       return res.status(400).json({ message: "Three images must be uploaded" });
     }
 
-    const { name, category, description, price, quantity, brand } = req.body;
+    const {
+      name,
+      category,
+      description,
+      price,
+      quantity,
+      brand,
+      gender,
+      color,
+    } = req.body;
 
     // Validate required fields
-    if (!name || !category || !description || !price || !quantity || !brand) {
+    if (
+      !name ||
+      !category ||
+      !description ||
+      !price ||
+      !quantity ||
+      !brand ||
+      !gender ||
+      !color
+    ) {
       return res
         .status(400)
         .json({ message: "Please provide all required fields" });
@@ -84,6 +103,8 @@ const createProduct = async (req, res) => {
       price,
       images: uploadedImageFiles,
       quantity,
+      gender,
+      color,
     });
 
     await newProduct.save();
@@ -152,11 +173,17 @@ const getAllProducts = async (req, res) => {
     res.status(500).send("Internal server error!");
   }
 };
-const getProductNumber = async (req, res) => {
+const getdataNumber = async (req, res) => {
   try {
     const products = await Product.countDocuments();
+    const categories = await Category.countDocuments();
+    const brands = await Brand.countDocuments();
+    const orders = await Order.countDocuments();
     res.json({
       products: products,
+      categories: categories,
+      brands: brands,
+      orders: orders,
     });
   } catch (error) {
     res.status(500).send("Internal server error!");
@@ -168,5 +195,5 @@ module.exports = {
   updateProduct,
   getproductbyId,
   getAllProducts,
-  getProductNumber,
+  getdataNumber,
 };

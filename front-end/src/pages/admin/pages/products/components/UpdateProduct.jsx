@@ -7,14 +7,14 @@ import { ProductsContext } from "../../../../../contexts/ProductsContext";
 function UpdateProduct() {
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [selectedBrand, setSelectedBrand] = useState(null);
-  const [selectedCategory, setSelecteCategory] = useState(null);
+  const { product, setProduct } = useContext(ProductsContext);
+  const { _id } = product;
   const [formData, setFormData] = useState({
-    name: "",
-    category: 0,
-    brand: 0,
-    price: 0,
-    description: "",
+    name: product.name || "",
+    category: product.category || "",
+    brand: product.brand || "",
+    price: product.price || "",
+    description: product.description || "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,6 +26,7 @@ function UpdateProduct() {
   const [loading, setLoading] = useState(false);
   const { setMessage, setupdateProduct, setOverlay } = useContext(StateContext);
   const { setBrandsData, setCategoriesData } = useContext(ProductsContext);
+
   const fetchCategories = async () => {
     try {
       setLoading(true);
@@ -40,7 +41,6 @@ function UpdateProduct() {
       const data = await response.json();
       setCategories(data.categories);
       setCategoriesData(data.categories);
-      setLoading(false);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -57,7 +57,7 @@ function UpdateProduct() {
         },
       });
       if (!response.ok) {
-        throw new Error("Failed to fetch categories");
+        throw new Error("Failed to fetch brands");
       }
       const data = await response.json();
       setBrands(data.brands);
@@ -68,48 +68,61 @@ function UpdateProduct() {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchBrands();
     fetchCategories();
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/product`, {
+      const response = await fetch(`${BASE_URL}/product/update/${_id}`, {
         method: "POST",
-        body: { formData },
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify(formData),
       });
+      if (!response.ok) {
+        throw new Error("Failed to update product");
+      }
       const data = await response.json();
+      setProduct(formData);
+      setupdateProduct(false);
+      setOverlay(false);
       setMessage(data.message);
       setTimeout(() => {
         setMessage("");
       }, 3000);
     } catch (error) {
       setError(error.message);
+    } finally {
+      setLoading(false);
     }
   };
+
   const close = () => {
     setupdateProduct(false);
     setOverlay(false);
   };
+
   const inputStyle = {
-    borderBottom: "2px solid #155e75 ",
+    borderBottom: "2px solid #155e75",
     backgroundColor: "rgba(240,240,240)",
     caretColor: "#155e75",
     height: "40px",
   };
+
   return (
     <div
-      className="flex gap-3  bg-white  column p-3 rounded relative"
+      className="flex gap-3 sm:w-9/10 md:w-6/10 lg:w-3/10 bg-white column p-3 rounded relative"
       style={{
         position: "fixed",
         zIndex: "1000",
-        height: "450px",
-        width: "30%",
+        height: "65vh",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
@@ -119,7 +132,7 @@ function UpdateProduct() {
       <span
         className="absolute flex-center p-2 rounded-full flex-center bg-primary text-white cursor-pointer w-8 h-8 font-bold"
         style={{ top: "-10px", right: "-10px" }}
-        onClick={() => close()}
+        onClick={close}
       >
         X
       </span>
@@ -129,61 +142,77 @@ function UpdateProduct() {
         onSubmit={handleSubmit}
         className="flex column gap-2 flex-1 h-full justify-between"
       >
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter product name"
-          value={formData.name}
-          onChange={handleChange}
-          className=" p-2 input"
-          style={inputStyle}
-        />
-        <select
-          value={formData.brand}
-          onChange={handleChange}
-          name="brand"
-          style={inputStyle}
-          className="input"
-        >
-          {brands.map((brand) => (
-            <option key={brand.name} value={brand._id}>
-              {brand.name}
-            </option>
-          ))}
-        </select>
-        <select
-          value={formData.category}
-          onChange={handleChange}
-          name="category"
-          style={inputStyle}
-          className="input"
-        >
-          {categories.map((category) => (
-            <option key={category._name} value={category._id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          style={inputStyle}
-          className="input"
-        />
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          style={inputStyle}
-          className="input"
-        />
+        <div className="flex column gap-1">
+          <span>Name</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter product name"
+            value={formData.name}
+            onChange={handleChange}
+            className="p-2 input"
+            style={inputStyle}
+          />
+        </div>
+        <div className="flex column gap-1">
+          <span>Brand</span>
+          <select
+            value={formData.brand}
+            onChange={handleChange}
+            name="brand"
+            style={inputStyle}
+            className="input"
+          >
+            {brands.map((brand) => (
+              <option key={brand._id} value={brand._id}>
+                {brand.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex column">
+          <span>Category</span>
+          <select
+            value={formData.category}
+            onChange={handleChange}
+            name="category"
+            style={inputStyle}
+            className="input"
+          >
+            {categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex column">
+          <span>Price</span>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            style={inputStyle}
+            className="input"
+          />
+        </div>
+        <div className="flex column">
+          <span>Description</span>
+          <input
+            type="text"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            style={inputStyle}
+            className="input"
+            placeholder="Enter product description"
+          />
+        </div>
         <input
           type="submit"
           value="Update"
-          className="bg-primary flex-center font bold text-white py-2 hover:opacity-50 cursor-pointer"
+          className="bg-primary flex-center font-bold text-white py-2 hover:opacity-50 cursor-pointer"
         />
         {error && <p className="text-red-800">{error}</p>}
       </form>

@@ -5,9 +5,8 @@ import { TbBrandSupabase } from "react-icons/tb";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi";
 import "./sidebar.css";
-import { useContext, useState } from "react";
+import { useContext} from "react";
 import { StateContext } from "../../../../contexts/StateContext";
 
 function Sidebar() {

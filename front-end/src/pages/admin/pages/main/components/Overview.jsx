@@ -7,18 +7,19 @@ import { AuthContext } from "../../../../../contexts/AuthContext";
 
 function Overview() {
   const { token } = useContext(AuthContext);
+  const { setDataNumber } = useContext(ProductsContext);
   const [data, setData] = useState({
     products: null,
-    orders: null,
     categories: null,
     brands: null,
+    orders: null,
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const getData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${BASE_URL}/product`, {
+      const response = await fetch(`${BASE_URL}/product/data/number`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -28,6 +29,7 @@ function Overview() {
       }
       const data = await response.json();
       setData(data);
+      setDataNumber(data);
       setLoading(false);
     } catch (err) {
       setError(err.message);

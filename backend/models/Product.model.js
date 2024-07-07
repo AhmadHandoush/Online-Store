@@ -13,9 +13,12 @@ const ProductSchema = new mongoose.Schema({
     required: true,
   },
   description: { type: String, required: true },
+  gender: { type: String, required: true },
+  color: { type: String, required: true },
   price: { type: Number, required: true },
   images: { type: [String], required: true },
   quantity: { type: Number, required: true, min: 0, default: 1 },
+
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

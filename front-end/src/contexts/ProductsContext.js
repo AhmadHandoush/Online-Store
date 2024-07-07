@@ -13,6 +13,7 @@ export const ProductsProvider = ({ children }) => {
   const token = localStorage.getItem("token");
   const [product, setProduct] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [dataNumber, setDataNumber] = useState(null);
   useEffect(() => {
     const filtered = products.filter(
       (item) =>
@@ -96,6 +97,8 @@ export const ProductsProvider = ({ children }) => {
         setFilteredProducts,
         searchQuery,
         setSearchQuery,
+        dataNumber,
+        setDataNumber,
       }}
     >
       {children}

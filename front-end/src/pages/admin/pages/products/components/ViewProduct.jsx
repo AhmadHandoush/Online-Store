@@ -17,12 +17,13 @@ function ViewProduct() {
   };
   return (
     <div
-      className="flex gap-10  px-10 bg-white  justify-between pt-10  rounded"
+      className="flex flex-col md:flex-row gap-4 md:gap-10 px-4 md:px-10 bg-white justify-between pt-6 md:pt-10 rounded"
       style={{
         position: "fixed",
         zIndex: "1000",
-        height: "450px",
-        width: "60%",
+        height: "70vh",
+        width: "90%",
+        maxWidth: "800px",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
@@ -30,63 +31,45 @@ function ViewProduct() {
       }}
     >
       <span
-        className="absolute flex-center p-2 rounded-full flex-center bg-primary text-white cursor-pointer w-8 h-8 font-bold"
+        className="absolute p-2 rounded-full flex-center bg-primary text-white cursor-pointer w-8 h-8 font-bold"
         style={{ top: "-10px", right: "-10px" }}
         onClick={() => close()}
       >
         X
       </span>
-      <div className="w-72 h-full">
+      <div className="w-full md:w-1/2 h-72">
         <Carousel infiniteLoop autoPlay>
           {images.map((img) => (
-            <div key={img}>
+            <div key={img} className="h-72">
               <img src={`${BASE_URL}/uploads/${img}`} alt={`${product.name}`} />
             </div>
           ))}
-          {/* <div>
-            <img
-              src={`${BASE_URL}/uploads/${product.images[0]}`}
-              alt={`${product.name}`}
-            />
-          </div>
-          <div>
-            <img
-              src={`${BASE_URL}/uploads/${product.images[1]}`}
-              alt={`${product.name}`}
-            />
-          </div>
-          <div>
-            <img
-              src={`${BASE_URL}/uploads/${product.images[2]}`}
-              alt={`${product.name}`}
-            />
-          </div> */}
         </Carousel>
       </div>
 
-      <div className=" flex flex-1 column gap-6 h-73">
+      <div className="flex flex-1 flex-col gap-2 md:gap-6 overflow-auto">
         <div className="flex justify-between">
-          <h2 className="font-bold">Name </h2>
+          <h2 className="font-bold">Name</h2>
           <h3>{name}</h3>
         </div>
         <div className="flex justify-between">
-          <h2 className="font-bold">Brand </h2>
+          <h2 className="font-bold">Brand</h2>
           <h3>{brand.name}</h3>
         </div>
         <div className="flex justify-between">
-          <h2 className="font-bold">Category </h2>
+          <h2 className="font-bold">Category</h2>
           <h3>{category.name}</h3>
         </div>
         <div className="flex justify-between">
-          <h2 className="font-bold">Price </h2>
+          <h2 className="font-bold">Price</h2>
           <h3>{price}$</h3>
         </div>
         <div className="flex justify-between">
-          <h2 className="font-bold">Quantity </h2>
+          <h2 className="font-bold">Quantity</h2>
           <h3>{quantity}</h3>
         </div>
         <div className="overflow-auto">
-          <h2 className="font-bold">Description </h2>
+          <h2 className="font-bold">Description</h2>
           <h3>{description}</h3>
         </div>
       </div>

@@ -3,31 +3,27 @@ import { StateContext } from "../../../../../contexts/StateContext";
 import { BASE_URL } from "../../../../../utils/Constants";
 import { ProductsContext } from "../../../../../contexts/ProductsContext";
 
-function Delete({ product, setProductId }) {
+function Delete({ product, setProductId, productId }) {
   const [error, setError] = useState("");
   const { setDeleteProduct, setMessage } = useContext(StateContext);
   const { products, setProducts } = useContext(ProductsContext);
   const token = localStorage.getItem("token");
   const deleteProduct = async () => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/product/delete/${product._id}`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/product/delete/${productId}`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
       const data = await response.json();
-      const updatedProducts = products.filter(
-        (Item) => Item._id !== product._id
-      );
+      const updatedProducts = products.filter((Item) => Item._id !== productId);
       setProducts(updatedProducts);
       setDeleteProduct(false);
+      setProductId(null);
       setMessage(data.message);
       setTimeout(() => {
         setMessage("");
@@ -38,7 +34,15 @@ function Delete({ product, setProductId }) {
   };
 
   return (
-    <div className="absolute top-10 flex column  p-4 bg-gray-500 inline-block">
+    <div
+      className=" flex column  p-4 bg-gray-500 inline-block"
+      style={{
+        position: "absolute",
+        top: "50%",
+        left: "40%",
+        transformt: "translate(-50%,-50%",
+      }}
+    >
       <p className="text-white mb-2">
         Are you sure ?
         <br />

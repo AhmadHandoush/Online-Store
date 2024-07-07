@@ -27,29 +27,28 @@ function Table() {
     setOverlay(true);
     setProduct(product);
   };
-  const [productId, setProductId] = useState(0);
+  const [productId, setProductId] = useState(null);
   return (
-    <div className="sm:w-9/10 md:w-full overflow-x-scroll">
-      <table className="table-fixed  min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg ">
+    <div className="overflow-x-auto">
+      <table className="table-fixed min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg ">
         <thead className="bg-gray-100">
           <tr className="bg-primary">
-            <th className="px-6 py-3 text-left text-xs  font-bold  uppercase tracking-wider text-white">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white">
               Name
             </th>
-            <th className="px-6 py-3 text-left text-xs  font-bold  uppercase tracking-wider  text-white">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white">
               Category
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold  uppercase tracking-wider  text-white">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white hidden md:table-cell">
               Brand
             </th>
-            <th className="px-6 py-3 text-left text-xs  font-bold  uppercase tracking-wider text-white">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white hidden md:table-cell">
               Price
             </th>
-
-            <th className="px-6 py-3 text-left text-xs   font-bold uppercase tracking-wider text-white">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white hidden lg:table-cell">
               Image
             </th>
-            <th className="px-6 py-3 text-left text-xs   font-bold uppercase tracking-wider text-white"></th>
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider text-white"></th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
@@ -57,26 +56,26 @@ function Table() {
             <tr
               className={`${index % 2 === 0 ? "bg-gray-200" : "bg-gray-50"} ${
                 product._id === productId ? "bg-red-300" : ""
-              } `}
+              }`}
               key={product._id}
             >
-              <td className="px-6 py-4 whitespace-nowrap   font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold">
                 {product.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap  font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold">
                 {product.category.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold hidden md:table-cell">
                 {product.brand.name}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap font-bold">
+              <td className="px-6 py-4 whitespace-nowrap font-bold hidden md:table-cell">
                 {product.price}$
               </td>
-              <td className="px-6 py-4 whitespace-nowrap ">
+              <td className="px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                 <img
                   src={`http://localhost:3001/uploads/${product.images[0]}`}
                   alt="product"
-                  className="w-6  h-6"
+                  className="w-6 h-6"
                 />
               </td>
               <td className="px-2 py-5 flex gap-5 justify-center">
@@ -86,12 +85,10 @@ function Table() {
                 />
                 <AiFillEdit
                   className="w-6 h-6 font-bold cursor-pointer"
-                  onClick={() => {
-                    update(product);
-                  }}
+                  onClick={() => update(product)}
                 />
                 <FaTrashAlt
-                  className="w-6 h-6  text-red-500 cursor-pointer relative "
+                  className="w-6 h-6 text-red-500 cursor-pointer relative"
                   onClick={() => {
                     setDeleteProduct(true);
                     setProductId(product._id);
@@ -99,7 +96,11 @@ function Table() {
                 />
               </td>
               {deleteProduct && (
-                <Delete product={product} setProductId={setProductId} />
+                <Delete
+                  product={product}
+                  setProductId={setProductId}
+                  productId={productId}
+                />
               )}
             </tr>
           ))}

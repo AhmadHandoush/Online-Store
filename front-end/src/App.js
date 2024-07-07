@@ -29,6 +29,7 @@ function App() {
                   <Route path="categories" element={<Categories />} />
                   <Route path="brands" element={<Brands />} />
                   <Route path="products" element={<Products />} />
+
                   <Route path="orders" element={<Orders />} />
                   <Route path="users" element={<Users />} />
                 </Route>

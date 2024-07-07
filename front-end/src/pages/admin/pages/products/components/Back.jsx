@@ -1,9 +1,9 @@
-import { MdAdd } from "react-icons/md";
+import { IoMdArrowBack } from "react-icons/io";
 
-function AddButton({ change }) {
+function Back({ change }) {
   return (
     <button
-      className="flex items-center justify-center  p-1 rounded w-24 "
+      className="flex items-center justify-center  p-1 rounded w-24"
       style={{
         border: "1px solid #155e75",
         background: "white",
@@ -20,12 +20,12 @@ function AddButton({ change }) {
       }}
       onClick={() => change()}
     >
-      <span className="font-bold " style={{ color: "inherit" }}>
-        Add
+      <IoMdArrowBack className="size-lg " style={{ color: "inherit" }} />
+      <span className="font-bold" style={{ color: "inherit" }}>
+        Back
       </span>
-      <MdAdd className="size-lg" style={{ color: "inherit" }} />
     </button>
   );
 }
 
-export default AddButton;
+export default Back;

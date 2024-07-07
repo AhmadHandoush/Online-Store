@@ -114,6 +114,9 @@ input::placeholder {
 .input {
   border-bottom: 4px solid var(--main-color);
   outline: none;
+  border-radius: 4px;
+  padding: 3px;
+  padding-left: 10px;
 }
 @keyframes l2 {
   to {
