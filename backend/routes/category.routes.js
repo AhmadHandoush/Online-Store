@@ -15,6 +15,6 @@ router.post("/create", authMiddleware, adminMiddleware, createCategory);
 router.get("/", authMiddleware, getAllCategories);
 router.get("/categories/number", authMiddleware, getCategoriesNumber);
 router.get("/:id", authMiddleware, adminMiddleware, getCategorybyId);
-router.delete("/delete/:id", authMiddleware, adminMiddleware, deleteCategory);
-router.put("/update/:id", authMiddleware, adminMiddleware, updateCategory);
+router.post("/delete/:id", authMiddleware, adminMiddleware, deleteCategory);
+router.post("/update/:id", authMiddleware, adminMiddleware, updateCategory);
 module.exports = router;

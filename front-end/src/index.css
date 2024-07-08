@@ -18,11 +18,14 @@ html {
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 ::selection {
   background-color: var(--main-color);
   color: var(--bg-white);
+}
+input {
+  caret-color: var(--main-color);
 }
 .center {
   position: absolute;

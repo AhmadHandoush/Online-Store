@@ -35,7 +35,7 @@ const updateBrand = async (req, res) => {
       { new: true }
     );
     return res.status(200).json({
-      message: "category updated successfully",
+      message: "brand updated successfully",
       brand: updatedBrand,
     });
   } catch (err) {
@@ -76,5 +76,5 @@ module.exports = {
   getBrandById,
   updateBrand,
   getAllBrands,
-  getBrandsNumber
+  getBrandsNumber,
 };

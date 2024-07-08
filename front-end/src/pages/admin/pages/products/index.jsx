@@ -22,6 +22,7 @@ function Products() {
         {addProduct ? <Back change={change} /> : <AddButton change={change} />}
       </div>
       {addProduct ? <AddProduct /> : <Table />}
+
       {viewProduct && <ViewProduct />}
       {updateProduct && <UpdateProduct />}
     </div>

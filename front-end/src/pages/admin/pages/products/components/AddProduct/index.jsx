@@ -189,7 +189,7 @@ function AddProduct() {
               className="p-2 border border-gray-300 rounded"
               style={inputStyle}
             />
-            {errors.name && <p className="text-red-800">{errors.name}</p>}
+            {errors.name && <p className="text-red-800">!{errors.name}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -209,7 +209,7 @@ function AddProduct() {
                 </option>
               ))}
             </select>
-            {errors.brand && <p className="text-red-800">{errors.brand}</p>}
+            {errors.brand && <p className="text-red-800">!{errors.brand}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -230,7 +230,7 @@ function AddProduct() {
               ))}
             </select>
             {errors.category && (
-              <p className="text-red-800">{errors.category}</p>
+              <p className="text-red-800">!{errors.category}</p>
             )}
           </div>
 
@@ -246,7 +246,7 @@ function AddProduct() {
               style={inputStyle}
               placeholder="Enter product price"
             />
-            {errors.price && <p className="text-red-800">{errors.price}</p>}
+            {errors.price && <p className="text-red-800">!{errors.price}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -262,7 +262,7 @@ function AddProduct() {
               placeholder="Enter product quantity"
             />
             {errors.quantity && (
-              <p className="text-red-800">{errors.quantity}</p>
+              <p className="text-red-800">!{errors.quantity}</p>
             )}
           </div>
 
@@ -283,7 +283,7 @@ function AddProduct() {
                 </option>
               ))}
             </select>
-            {errors.gender && <p className="text-red-800">{errors.gender}</p>}
+            {errors.gender && <p className="text-red-800">!{errors.gender}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -303,7 +303,7 @@ function AddProduct() {
                 </option>
               ))}
             </select>
-            {errors.color && <p className="text-red-800">{errors.color}</p>}
+            {errors.color && <p className="text-red-800">!{errors.color}</p>}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -318,7 +318,7 @@ function AddProduct() {
               placeholder="Enter product description"
             />
             {errors.description && (
-              <p className="text-red-800">{errors.description}</p>
+              <p className="text-red-800">!{errors.description}</p>
             )}
           </div>
 
@@ -332,7 +332,7 @@ function AddProduct() {
               onChange={handleFileChange}
               className="p-2 border border-gray-300 rounded"
             />
-            {errors.images && <p className="text-red-800">{errors.images}</p>}
+            {errors.images && <p className="text-red-800">!{errors.images}</p>}
           </div>
 
           <button
@@ -341,7 +341,7 @@ function AddProduct() {
           >
             {loading ? "Adding..." : "Add"}
           </button>
-          {error && <p className="text-red-800 col-span-full">{error}</p>}
+          {error && <p className="text-red-800 col-span-full">!{error}</p>}
         </form>
       </div>
     </div>

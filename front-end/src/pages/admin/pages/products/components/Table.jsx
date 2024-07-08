@@ -29,7 +29,7 @@ function Table() {
   };
   const [productId, setProductId] = useState(null);
   return (
-    <div className="overflow-x-auto">
+    <div>
       <table className="table-fixed min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg ">
         <thead className="bg-gray-100">
           <tr className="bg-primary">
