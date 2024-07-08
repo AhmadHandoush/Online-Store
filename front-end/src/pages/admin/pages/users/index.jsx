@@ -9,6 +9,7 @@ function Users() {
   const { token } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [error, setError] = useState("");
   const { setMessage, setOverlay } = useContext(StateContext);
   const [showAdd, setShowAdd] = useState(false);
@@ -32,13 +33,14 @@ function Users() {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     getUsers();
   }, []);
   return (
     <div className="flex-1 p-4">
       <div className="mb-4">
-        <Search />
+        <Search setFilteredUsers={setFilteredUsers} users={users} />
       </div>
       <div className="overflow-x-auto w-full">
         <table className="min-w-full table-auto">
@@ -60,7 +62,7 @@ function Users() {
           </thead>
           {users && (
             <tbody>
-              {users.map((user, index) => (
+              {filteredUsers.map((user, index) => (
                 <tr className="border border-gray-300">
                   <td className="px-6 py-3 text-xs font-bold uppercase text-center ">
                     {index + 1}
