@@ -10,7 +10,7 @@ const Signup = () => {
   const [lastName, setLastName] = useState("");
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
-  const { update } = useContext(AuthContext);
+  const { update, setIsLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +36,7 @@ const Signup = () => {
       }
       if (data.user) {
         await update(data.user);
+        setIsLogin(true);
       }
     } catch (err) {
       setError("An unexpected error occurred");

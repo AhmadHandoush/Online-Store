@@ -1,0 +1,83 @@
+nav ul li a {
+  color: white;
+  transition: all 0.3s;
+  position: relative;
+}
+nav ul li a::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #daa520;
+  transition: all 0.3s;
+}
+
+nav ul li .active {
+  background-color: #155e75;
+  color: #daa520;
+}
+ul li a:hover::before {
+  width: 80%;
+}
+
+nav .right i:hover {
+  color: #daa520;
+}
+nav .container {
+  width: 100%;
+}
+nav .icons svg:hover {
+  color: #daa520;
+}
+.btn-login:hover {
+  border: 1px solid #daa520;
+  background-color: #155e75;
+  color: #daa520;
+}
+
+@media (max-width: 767px) {
+  nav ul {
+    position: absolute;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
+    top: -20rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+  }
+  nav .open {
+    top: 4rem;
+  }
+  nav img {
+    width: 150px;
+  }
+  nav ul li a {
+    color: #155e75;
+  }
+  nav ul li .active {
+    color: #daa520;
+    background-color: white;
+  }
+  nav ul li a::before {
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  nav ul {
+    gap: 2px;
+  }
+  nav ul li a {
+    padding: 2px;
+    color: red;
+  }
+  nav .container {
+    width: 100%;
+  }
+}

@@ -1,0 +1,29 @@
+.ball-box {
+  width: 200px;
+  height: 13px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  transform: translateX(50px);
+  display: flex;
+  align-items: center;
+}
+
+.ball-box span {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #155e75;
+  animation: move 2s linear infinite;
+  left: 0;
+}
+@keyframes move {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(200px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

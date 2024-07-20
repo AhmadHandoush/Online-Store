@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const { update } = useContext(AuthContext);
+  const { update, setIsLogin } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,7 +26,8 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token);
-        
+        setIsLogin(true);
+
         setLoading(false);
         if (data.user.role === "admin") {
           setTimeout(() => {

@@ -12,6 +12,7 @@ const userRouter = require("./routes/user.routes");
 const categoryRouter = require("./routes/category.routes");
 const orderRouter = require("./routes/Order.routes");
 const brandRouter = require("./routes/brand.routes");
+const contactRouter = require("./routes/Contact.routes");
 const multer = require("multer");
 const PORT = process.env.PORT || 5000;
 const path = require("path");
@@ -32,6 +33,7 @@ app.use("/product", productRouter);
 app.use("/category", categoryRouter);
 app.use("/order", orderRouter);
 app.use("/brand", brandRouter);
+app.use("/contact", contactRouter);
 
 app.listen(PORT, (err) => {
   if (err) throw err;

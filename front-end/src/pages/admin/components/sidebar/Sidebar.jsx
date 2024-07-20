@@ -6,8 +6,9 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./sidebar.css";
-import { useContext} from "react";
+import { useContext } from "react";
 import { StateContext } from "../../../../contexts/StateContext";
+import { AiFillMessage } from "react-icons/ai";
 
 function Sidebar() {
   const { openSide } = useContext(StateContext);
@@ -82,6 +83,17 @@ function Sidebar() {
             <FaUsers className="text-lg text-white font-bold size-5 group-hover:text-primary" />
             <span className="text-base font-bold text-white group-hover:text-primary">
               Users
+            </span>
+          </NavLink>
+        </li>{" "}
+        <li className="hover:bg-white group rounded transition-all">
+          <NavLink
+            to={"/admin-dashboard/contacts"}
+            className="flex items-center gap-x-2 p-2 "
+          >
+            <AiFillMessage className="text-lg text-white font-bold size-5 group-hover:text-primary" />
+            <span className="text-base font-bold text-white group-hover:text-primary">
+              Messages
             </span>
           </NavLink>
         </li>
