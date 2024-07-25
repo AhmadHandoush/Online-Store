@@ -1,0 +1,35 @@
+.one {
+  height: 80vh;
+  width: 30%;
+  background-color: red;
+  overflow: hidden;
+}
+.two {
+  height: 600px;
+  flex: 1;
+  height: 80vh;
+}
+.two .first {
+  height: 50%;
+}
+.two .first > div {
+  background-color: green;
+  width: 33%;
+  height: 100%;
+  overflow: hidden;
+}
+.two .second {
+  width: 100%;
+  height: 50%;
+  background-color: black;
+  overflow: hidden;
+}
+.gallery {
+  gap: 40px;
+}
+.gallery img {
+  transition: 0.3s;
+}
+.gallery img:hover {
+  scale: 1.1;
+}

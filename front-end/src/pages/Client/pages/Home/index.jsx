@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Second from "./components/Second";
 import Comparison from "./components/third";
 import First from "./components/first";
+import Gallery from "./components/Gallery";
 
 function Home() {
   // const { user } = useContext(AuthContext);
@@ -21,6 +22,7 @@ function Home() {
       <Hero />
       <First />
       <Second />
+      <Gallery />
       <Comparison />
     </div>
   );
