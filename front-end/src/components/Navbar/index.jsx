@@ -34,7 +34,7 @@ function Navbar() {
 
         <div className=" logo w-32 h-9 flex items-center ">
           <Link to={"overview"}>
-            <img src="./Capture.png" alt="HND" />
+            <img src="../Capture.png" alt="HND" />
           </Link>
         </div>
         <ul className={`flex items-center lg:gap-5 ${openNav ? "open" : ""}`}>

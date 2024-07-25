@@ -1,0 +1,15 @@
+.statistics .text {
+  width: 45%;
+}
+.statistics .data {
+  flex: 1;
+  gap: 20px;
+  justify-content: space-between;
+}
+.statistics .data div {
+  width: 35%;
+}
+.statistics .data > div {
+  border-left: 5px solid #daa520;
+  padding: 10px;
+}

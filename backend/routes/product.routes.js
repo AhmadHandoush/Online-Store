@@ -17,7 +17,7 @@ router.post("/delete/:id", authMiddleware, deleteProductById);
 router.post("/update/:id", authMiddleware, adminMiddleware, updateProduct);
 router.get("/:id", authMiddleware, getproductbyId);
 router.get("/", authMiddleware, getAllProducts);
-router.get("/data/number", authMiddleware, getdataNumber);
+router.get("/data/number", getdataNumber);
 module.exports = router;
 // const bodyParser = require("body-parser");
 // app.use(bodyParser.json());

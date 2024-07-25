@@ -1,0 +1,17 @@
+.title h2 {
+  text-align: center;
+  position: relative;
+  font-size: 30px;
+  font-weight: bold;
+  width: fit-content;
+}
+.title h2::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  left: 50%;
+  height: 3px;
+  background-color: #155e75;
+  bottom: -5px;
+  transform: translateX(-50%);
+}

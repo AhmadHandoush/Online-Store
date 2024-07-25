@@ -1,0 +1,51 @@
+.comparison .info > div {
+  width: 30%;
+}
+.comparison .info .old h1 {
+  font-size: 24px;
+  color: #daa520;
+}
+.comparison .info .old {
+  position: relative;
+  z-index: 100;
+  transform: translateX(25%);
+  transition: z-index 2s;
+}
+.comparison .info .online {
+  transform: translateX(-10%);
+  background-color: #daa520;
+  position: relative;
+  z-index: 100;
+  transition: 1s;
+}
+.comparison .info .online h1 {
+  font-size: 24px;
+}
+.comparison .info .old:hover {
+  animation: old 2s ease-in-out;
+}
+.comparison .info .online:hover {
+  animation: online 2s ease-in-out;
+}
+
+@keyframes old {
+  0% {
+    transform: translateX(25%);
+  }
+  50% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(25%);
+    z-index: 101;
+  }
+}
+@keyframes online {
+  50% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(-10%);
+    z-index: 99;
+  }
+}
