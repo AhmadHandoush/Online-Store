@@ -9,12 +9,12 @@ function Hero() {
   return (
     <div className="hero w-full flex relative">
       <img
-        src="../image2.png"
+        src="../shop2.png"
         alt="HND-new"
         className={`new ${open ? "open" : "before"} `}
       />
       <img
-        src="../image1.png"
+        src="../shop1.png"
         alt="HND-old"
         className={`old ${open && "close"} `}
       />

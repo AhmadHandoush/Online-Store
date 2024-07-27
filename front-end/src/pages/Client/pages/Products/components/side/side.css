@@ -1,0 +1,7 @@
+.side {
+  width: 250px;
+  background-color: black;
+  color: white;
+  height: 80vh;
+  overflow-y: auto;
+}

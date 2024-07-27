@@ -3,7 +3,7 @@ import "./comparison.css";
 
 function Comparison() {
   return (
-    <section className="comparison flex column gap-4 pb-2">
+    <section className="comparison flex column gap-4 pb-5">
       <Title title={"Comparison"} />
       <div className="info flex-center mt-5">
         <div className="old p-2  text-white bg-primary rounded flex column gap-2">

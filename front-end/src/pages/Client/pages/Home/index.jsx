@@ -7,6 +7,7 @@ import Second from "./components/Second";
 import Comparison from "./components/third";
 import First from "./components/first";
 import Gallery from "./components/Gallery";
+import Footer from "../../Components/footer";
 
 function Home() {
   // const { user } = useContext(AuthContext);
@@ -24,6 +25,7 @@ function Home() {
       <Second />
       <Gallery />
       <Comparison />
+      {/* <Footer /> */}
     </div>
   );
 }

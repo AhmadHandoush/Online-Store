@@ -1,0 +1,19 @@
+footer {
+  margin-top: 4rem;
+  height: 40vh;
+  background-color: #155e75;
+  bottom: 0;
+}
+footer small {
+  color: white;
+}
+footer small span {
+  color: #daa520;
+  font-size: 20px;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer a {
+  color: white;
+}

@@ -13,10 +13,10 @@
   height: 13px;
   border-radius: 50%;
   background-color: #155e75;
-  animation: move 2s linear infinite;
+  animation: moves 2s linear infinite;
   left: 0;
 }
-@keyframes move {
+@keyframes moves {
   0% {
     transform: translateX(0);
   }

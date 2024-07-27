@@ -20,6 +20,8 @@ import Services from "./pages/Client/pages/Services";
 import Home from "./pages/Client/pages/Home";
 import About from "./pages/Client/pages/About";
 import Contact from "./pages/Client/pages/Contact";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
