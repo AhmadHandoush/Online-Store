@@ -20,13 +20,13 @@ function Top() {
   };
   return (
     <section className="carousel-container">
-      <Slider {...settings}>
+      <Slider {...settings} className="car">
         {images.map((image, index) => (
-          <div key={index}>
+          <div key={index} className="con">
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="carousel-image"
+              className="carousel-image s-image"
             />
           </div>
         ))}

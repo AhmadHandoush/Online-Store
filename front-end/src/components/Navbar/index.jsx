@@ -39,39 +39,27 @@ function Navbar() {
         </div>
         <ul className={`flex items-center lg:gap-5 ${openNav ? "open" : ""}`}>
           <li>
-            <NavLink
-              className="px-5 py-2  font-bold flex-center"
-              to={"overview"}
-            >
+            <NavLink className="px-5 py-2  flex-center" to={"overview"}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className="px-5 py-2  font-bold flex-center"
-              to={"all-products"}
-            >
+            <NavLink className="px-5 py-2   flex-center" to={"all-products"}>
               Products
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className="px-5 py-2  font-bold flex-center"
-              to={"services"}
-            >
+            <NavLink className="px-5 py-2   flex-center" to={"services"}>
               Services
             </NavLink>
           </li>
           <li>
-            <NavLink className="px-5 py-2  font-bold flex-center" to={"about"}>
+            <NavLink className="px-5 py-2   flex-center" to={"about"}>
               About
             </NavLink>
           </li>
           <li>
-            <NavLink
-              className="px-5 py-2  font-bold flex-center"
-              to={"contact"}
-            >
+            <NavLink className="px-5 py-2   flex-center" to={"contact"}>
               Contact
             </NavLink>
           </li>
@@ -85,14 +73,14 @@ function Navbar() {
           </Link>
           {!isLogin ? (
             <Link
-              className="btn-login bg-primary border border-white flex-center font-bold text-white rounded p-2 "
+              className="btn-login bg-primary border border-white flex-center text-white rounded p-2 "
               to={"/auth"}
             >
               Login
             </Link>
           ) : (
             <button
-              className="btn-login bg-primary border border-white flex-center font-bold text-white rounded p-2 outline-none "
+              className="btn-login bg-primary border border-white flex-center text-white rounded p-2 outline-none "
               onClick={() => handleLogout()}
             >
               Logout

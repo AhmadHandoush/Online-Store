@@ -27,11 +27,7 @@ export const ProductsProvider = ({ children }) => {
   const fetchProducts = async () => {
     try {
       setLaoding(true);
-      const response = await fetch(`${BASE_URL}/product`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(`${BASE_URL}/product`);
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }

@@ -17,17 +17,21 @@ function Table() {
     setOverlay,
     setupdateProduct,
   } = useContext(StateContext);
+
   const ViewProduct = (product) => {
     setViewProduct(true);
     setOverlay(true);
     setProduct(product);
   };
+
   const update = (product) => {
     setupdateProduct(true);
     setOverlay(true);
     setProduct(product);
   };
+
   const [productId, setProductId] = useState(null);
+
   return (
     <div>
       <table className="table-fixed min-w-full divide-y divide-gray-200 bg-white shadow-md rounded-lg ">
@@ -74,7 +78,7 @@ function Table() {
               <td className="px-6 py-4 whitespace-nowrap hidden lg:table-cell">
                 <img
                   src={`http://localhost:3001/uploads/${product.images[0]}`}
-                  alt="product"
+                  alt={product.name}
                   className="w-6 h-6"
                 />
               </td>
@@ -95,17 +99,17 @@ function Table() {
                   }}
                 />
               </td>
-              {deleteProduct && (
-                <Delete
-                  product={product}
-                  setProductId={setProductId}
-                  productId={productId}
-                />
-              )}
             </tr>
           ))}
         </tbody>
       </table>
+      {deleteProduct && (
+        <Delete
+          product={products.find((p) => p._id === productId)}
+          setProductId={setProductId}
+          productId={productId}
+        />
+      )}
     </div>
   );
 }
