@@ -19,7 +19,7 @@ function Sidebar() {
       } w-60 pt-2 bg-primary transition-all h-screen md:sticky top-0 `}
     >
       <div className="logo flex-start pl-3  pb-2 ">
-        <img src="./Capture.png" alt="logo" className="w-32 h-9" />
+        <img src="../Capture.png" alt="logo" className="w-32 h-9" />
       </div>
       <hr />
       <ul className="px-3 pt-5 flex column gap-5">

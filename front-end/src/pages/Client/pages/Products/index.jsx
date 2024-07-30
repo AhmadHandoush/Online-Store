@@ -17,7 +17,11 @@ function AllProducts() {
     <div>
       <Top />
       <div className="flex mt-4 pl-2">
-        <Side />
+        <Side
+          filteredProducts={filteredProducts}
+          setFilteredProducts={setFilteredProducts}
+          products={products}
+        />
         <div className="flex column gap-5 ml-auto mr-auto w-9/10  items-center">
           <SearchProduct
             setFilteredProducts={setFilteredProducts}

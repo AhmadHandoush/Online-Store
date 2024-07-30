@@ -11,7 +11,7 @@ function SearchProduct({ setFilteredProducts, filteredProducts, products }) {
       product.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredProducts(filter);
-  }, [searchQuery, filteredProducts]);
+  }, [searchQuery]);
 
   return (
     <section className=" w-full md:w-9/10 mr-auto ml-auto search  flex gap-5 items-center ">

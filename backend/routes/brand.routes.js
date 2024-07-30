@@ -12,7 +12,7 @@ const {
 
 const router = express.Router();
 router.post("/create", authMiddleware, adminMiddleware, createBrand);
-router.get("/", authMiddleware, getAllBrands);
+router.get("/", getAllBrands);
 router.get("/brands/number", authMiddleware, getBrandsNumber);
 router.get("/:id", authMiddleware, getBrandById);
 router.post("/delete/:id", authMiddleware, adminMiddleware, deleteBrand);

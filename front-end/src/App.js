@@ -22,6 +22,7 @@ import About from "./pages/Client/pages/About";
 import Contact from "./pages/Client/pages/Contact";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Single from "./pages/Client/pages/Products/Pages/SingleProduct";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
                 <Route path="/home" element={<Client />}>
                   <Route index element={<Navigate to={"overview"} />} />
                   <Route path="all-products" element={<AllProducts />} />
+                  <Route path=":id" element={<Single />} />
+
                   <Route path="overview" element={<Home />} />
                   <Route path="services" element={<Services />} />
                   <Route path="about" element={<About />} />

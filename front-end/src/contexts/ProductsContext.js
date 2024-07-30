@@ -65,11 +65,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (token) {
-      fetchProducts();
-      fetchOrders();
-    }
-  }, [token]);
+    fetchProducts();
+    // fetchOrders();
+  }, []);
 
   return (
     <ProductsContext.Provider

@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import "./card.css";
 import { BASE_URL } from "../../../../../../../../utils/Constants";
 function Card({ product }) {
-  const { name, description, images, price } = product;
+  const { _id, name, description, images, price } = product;
   return (
-    <Link>
+    <Link to={`/home/${_id}`}>
       <div className="product-card">
         <img
           src={`${BASE_URL}/uploads/${images[0]}`}
@@ -18,7 +18,7 @@ function Card({ product }) {
               ${price.toFixed(2)}
             </h3>
           </div>
-          <p className="product-description">{description.slice(0, 30)}...</p>
+          <p className="product-description">{description.slice(0, 20)}...</p>
         </div>
       </div>
     </Link>

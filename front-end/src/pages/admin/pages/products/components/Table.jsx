@@ -67,7 +67,9 @@ function Table() {
                 {product.name}
               </td>
               <td className="px-6 py-4 whitespace-nowrap font-bold">
-                {product.category.name}
+                {/* {product.category.name}
+                 */}
+                category
               </td>
               <td className="px-6 py-4 whitespace-nowrap font-bold hidden md:table-cell">
                 {product.brand.name}

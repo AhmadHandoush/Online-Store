@@ -8,8 +8,6 @@ const fs = require("fs");
 
 const createProduct = async (req, res) => {
   try {
-    // Check if files are uploaded
-    console.log(req.body);
     if (
       !req.files ||
       !req.files.images ||

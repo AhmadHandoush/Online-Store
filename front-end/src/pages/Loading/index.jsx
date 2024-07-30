@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./loading.css";
+import { useEffect } from "react";
 
 function Loading() {
   const navigate = useNavigate();
-  setTimeout(() => {
-    navigate("/home");
-  }, 3000);
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/home");
+    }, 3000);
+  }, [navigate]);
   return (
     <div className="flex-center h-screen bg-primary">
       <div className="flex column gap-4">
