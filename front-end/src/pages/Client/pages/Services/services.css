@@ -1,0 +1,9 @@
+.serve {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: red;
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+}

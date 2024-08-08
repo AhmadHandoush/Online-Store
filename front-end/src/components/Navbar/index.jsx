@@ -68,7 +68,7 @@ function Navbar() {
           <Link>
             <CiHeart className="text-3xl  text-white" />
           </Link>
-          <Link>
+          <Link to={"cart"}>
             <MdOutlineShoppingCart className="text-2xl text-white " />
           </Link>
           {!isLogin ? (

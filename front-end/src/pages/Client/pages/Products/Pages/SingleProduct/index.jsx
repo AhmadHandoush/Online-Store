@@ -33,13 +33,13 @@ function Single() {
   }, [id]);
 
   return (
-    <div className="h-screen pt-4 pb-4">
+    <div className="h-screen pt-4 pb-4 single">
       {loading ? (
         <div className="flex-center">
           <Loader />
         </div>
       ) : (
-        <section className="single flex rounded w-9/10 justify-between mx-auto ">
+        <section className="singlee flex rounded w-6/10 justify-between mx-auto gap-2">
           <Images product={product} loading={loading} error={error} />
 
           <Details product={product} loading={loading} error={error} />

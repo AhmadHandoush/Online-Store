@@ -9,6 +9,7 @@ export const StateProvider = ({ children }) => {
   const [overlaying, setOverlay] = useState(false);
   const [message, setMessage] = useState("");
   const [updateProduct, setupdateProduct] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     <StateContext.Provider
@@ -25,6 +26,8 @@ export const StateProvider = ({ children }) => {
         setMessage,
         setupdateProduct,
         updateProduct,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}

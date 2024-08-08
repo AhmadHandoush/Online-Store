@@ -23,6 +23,7 @@ import Contact from "./pages/Client/pages/Contact";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Single from "./pages/Client/pages/Products/Pages/SingleProduct";
+import Cart from "./pages/Client/pages/Cart";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                   <Route index element={<Navigate to={"overview"} />} />
                   <Route path="all-products" element={<AllProducts />} />
                   <Route path=":id" element={<Single />} />
+                  <Route path="cart" element={<Cart />} />
 
                   <Route path="overview" element={<Home />} />
                   <Route path="services" element={<Services />} />

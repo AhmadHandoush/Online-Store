@@ -1,0 +1,11 @@
+.single {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+}
+.singlee {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
