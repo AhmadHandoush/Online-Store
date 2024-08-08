@@ -1,5 +1,6 @@
 .order {
   width: 30%;
+  height: 320px;
 }
 .order h1 {
   font-size: 20px;
@@ -13,4 +14,7 @@
 }
 .checkout {
   text-transform: uppercase;
+}
+.total-price {
+  margin-top: -5px;
 }

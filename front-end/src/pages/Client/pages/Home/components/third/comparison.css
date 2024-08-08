@@ -1,6 +1,9 @@
 .comparison .info > div {
   width: 30%;
 }
+.comparison{
+  padding-bottom: 4rem;
+}
 .comparison .info .old h1 {
   font-size: 24px;
   color: #daa520;

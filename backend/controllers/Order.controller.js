@@ -112,5 +112,5 @@ module.exports = {
   deleteOrderById,
   getOrderById,
   getAllOrders,
-  getOrdersNumber
+  getOrdersNumber,
 };
