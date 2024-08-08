@@ -1,0 +1,17 @@
+.item .image {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+}
+.informaton {
+  height: 70px;
+  gap: 5px;
+}
+.item h5 {
+  font-size: 12px;
+}
+.price,
+.total,
+.quantity {
+  transform: translateX(-10px);
+}

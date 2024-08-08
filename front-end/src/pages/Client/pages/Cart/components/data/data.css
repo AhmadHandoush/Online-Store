@@ -1,0 +1,10 @@
+.data {
+  width: 70%;
+  padding: 10px;
+}
+.data .lists .list-title li {
+  color: gray;
+}
+.totall {
+  transform: translateX(-8px);
+}

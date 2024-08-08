@@ -1,9 +1,17 @@
+import { useState } from "react";
 import Loader from "../../../../../../../../components/Loader";
 import AddToCart from "./components/AddButton";
 import "./details.css";
 function Details({ product, loading, error }) {
   const { name, price, description, color, gender, brand, category } = {
     ...product,
+  };
+  const [add, setAdd] = useState(false);
+  const added = () => {
+    setAdd(true);
+    setTimeout(() => {
+      setAdd(false);
+    }, 3000);
   };
   if (loading) {
     return <Loader />;
@@ -40,8 +48,11 @@ function Details({ product, loading, error }) {
             <h2>Description</h2>
             <p className="description">{description}</p>
           </div>
-          <div className="flex-center">
-            <AddToCart product={product} />
+          <div className="flex-center column">
+            <AddToCart product={product} added={added} />
+            {add && (
+              <p className="text-green-500 font-bold">Product Added to cart</p>
+            )}
           </div>
         </div>
       ) : (

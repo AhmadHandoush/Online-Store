@@ -6,11 +6,13 @@ import { IoMdMenu } from "react-icons/io";
 import { useContext, useEffect, useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { AuthContext } from "../../contexts/AuthContext";
+import { StateContext } from "../../contexts/StateContext";
 
 function Navbar() {
   const [openNav, setOpenNav] = useState(false);
   const token = localStorage.getItem("token");
   const { isLogin, setIsLogin } = useContext(AuthContext);
+  const { cartItems } = useContext(StateContext);
 
   useEffect(() => {}, [token]);
   const handleLogout = () => {
@@ -68,8 +70,9 @@ function Navbar() {
           <Link>
             <CiHeart className="text-3xl  text-white" />
           </Link>
-          <Link to={"cart"}>
+          <Link to={"cart"} className="relative">
             <MdOutlineShoppingCart className="text-2xl text-white " />
+            <small className="itemss-number">{cartItems.length}</small>
           </Link>
           {!isLogin ? (
             <Link
