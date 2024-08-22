@@ -4,12 +4,17 @@
 .statistics .data {
   flex: 1;
   gap: 20px;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-end;
 }
-.statistics .data div {
-  width: 35%;
+
+.statistics .text {
+  height: 150px;
+  display: flex;
+  align-items: center;
 }
-.statistics .data > div {
+.statistics .data div > div {
   border-left: 5px solid #daa520;
   padding: 10px;
+  width: 200px;
 }

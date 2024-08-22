@@ -30,6 +30,7 @@ const Login = () => {
 
         setLoading(false);
         if (data.user.role === "admin") {
+          setIsLogin(true);
           setTimeout(() => {
             navigate("/admin-dashboard");
           });

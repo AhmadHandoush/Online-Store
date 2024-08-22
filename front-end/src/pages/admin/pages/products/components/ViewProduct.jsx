@@ -40,8 +40,12 @@ function ViewProduct() {
       <div className="w-full md:w-1/2 h-72">
         <Carousel infiniteLoop autoPlay>
           {images.map((img) => (
-            <div key={img} className="h-72">
-              <img src={`${BASE_URL}/uploads/${img}`} alt={`${product.name}`} />
+            <div key={img} className="h-72 w-72 overflow-hidden">
+              <img
+                src={`${BASE_URL}/uploads/${img}`}
+                alt={`${product.name}`}
+                className="s-image"
+              />
             </div>
           ))}
         </Carousel>

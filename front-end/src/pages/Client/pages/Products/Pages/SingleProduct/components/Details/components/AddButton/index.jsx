@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "./add.css";
 import { StateContext } from "../../../../../../../../../../contexts/StateContext";
 function AddToCart({ product, added }) {
-  const { setCartItems } = useContext(StateContext);
+  const { setCartItems, cartItems } = useContext(StateContext);
   const [add, setAdd] = useState(false);
 
   return (

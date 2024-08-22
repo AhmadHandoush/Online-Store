@@ -3,9 +3,10 @@ import Loader from "../../../../../../../../components/Loader";
 import AddToCart from "./components/AddButton";
 import "./details.css";
 function Details({ product, loading, error }) {
-  const { name, price, description, color, gender, brand, category } = {
-    ...product,
-  };
+  const { name, price, description, color, gender, brand, category, quantity } =
+    {
+      ...product,
+    };
   const [add, setAdd] = useState(false);
   const added = () => {
     setAdd(true);
@@ -39,6 +40,10 @@ function Details({ product, loading, error }) {
           <div className="flex justify-between items-center">
             <h2>Category</h2>
             <h3>{category.name}</h3>
+          </div>{" "}
+          <div className="flex justify-between items-center">
+            <h2>Quantity</h2>
+            <h3>{quantity}</h3>
           </div>
           <div className="flex justify-between  items-center">
             <h2>Price</h2>

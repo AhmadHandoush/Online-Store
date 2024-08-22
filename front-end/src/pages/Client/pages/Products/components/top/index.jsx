@@ -5,9 +5,9 @@ import Slider from "react-slick";
 function Top() {
   const images = [
     "../shop1.png",
+    "../image1.png",
     "../shop1.png",
-    "../shop1.png",
-    "../shop1.png",
+    "../image1.png",
   ];
   const settings = {
     dots: true,
@@ -16,7 +16,7 @@ function Top() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
   };
   return (
     <section className="carousel-container">

@@ -13,6 +13,7 @@ function ShowAll({ filteredProducts }) {
                 lg:grid-cols-4 gap-3
                 justify-items-center
                  mr-auto ml-auto w-full md:w-9/10
+                 pb-3
                  "
     >
       {filteredProducts.map((product, i) => (

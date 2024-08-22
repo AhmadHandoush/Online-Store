@@ -1,16 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Item.css";
 import { BASE_URL } from "../../../../../../../../utils/Constants";
+import { StateContext } from "../../../../../../../../contexts/StateContext";
 
 function Item({ item, setTotalArray, index }) {
   const { name, category, brand, price } = { ...item };
   const [quantity, setQuantity] = useState(1);
+  const { setCartItems } = useContext(StateContext);
+
   let total = price * quantity;
   useEffect(() => {
     setTotalArray((prev) => {
       const newArray = [...prev];
       newArray[index] = total;
       return newArray;
+    });
+    setCartItems((prev) => {
+      const newList = [...prev];
+      newList[index].quantity = quantity;
+      return newList;
     });
   }, [total, setTotalArray]);
 
@@ -34,6 +42,9 @@ function Item({ item, setTotalArray, index }) {
         <button
           className="flex-center"
           onClick={() => {
+            if (quantity <= 0) {
+              return;
+            }
             setQuantity((prev) => prev - 1);
           }}
         >

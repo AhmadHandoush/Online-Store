@@ -14,16 +14,17 @@ function Data({ setTotalArray }) {
         </div>
         <hr />
       </div>
-      <div className="lists mt-3">
-        <ul className="list-title  flex justify-between items-center">
-          <li className="text-start font-bold">Product Details</li>
-          <li className="text-start font-bold">Quantity</li>
-          <li className="text-start font-bold">Price</li>
-          <li className="text-start font-bold totall">Total</li>
-        </ul>
-        {!cartItems ? (
-          <p>Your Cart is empty</p>
-        ) : (
+      {!cartItems ? (
+        <p>Your cart is empty!</p>
+      ) : (
+        <div className="lists mt-3">
+          <ul className="list-title  flex justify-between items-center">
+            <li className="text-start font-bold">Product Details</li>
+            <li className="text-start font-bold">Quantity</li>
+            <li className="text-start font-bold">Price</li>
+            <li className="text-start font-bold totall">Total</li>
+          </ul>
+
           <ul className="flex column gap-2 mt-2">
             {cartItems.map((item, index) => (
               <Item
@@ -34,8 +35,8 @@ function Data({ setTotalArray }) {
               />
             ))}
           </ul>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

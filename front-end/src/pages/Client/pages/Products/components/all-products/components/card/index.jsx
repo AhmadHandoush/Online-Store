@@ -4,7 +4,7 @@ import { BASE_URL } from "../../../../../../../../utils/Constants";
 function Card({ product }) {
   const { _id, name, description, images, price } = product;
   return (
-    <Link to={`/home/${_id}`}>
+    <Link to={`/home/${_id}`} className="w-72 h-71">
       <div className="product-card">
         <img
           src={`${BASE_URL}/uploads/${images[0]}`}
